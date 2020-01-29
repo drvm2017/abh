@@ -6,18 +6,31 @@ using System.Threading.Tasks;
 
 namespace MainLexikon
 {
-  public class Wort:IEquatable<Wort>
+  public class Wort : IEquatable<Wort>
   {
-    private String wort;
+    private String wortlaut;
+    private int anzahlBelege = 1;
+    public Boolean zweifelhaft;
 
-    public Wort(String wort)
+    public Wort(String wortlaut)
     {
-      this.wort = wort;
+      this.wortlaut = wortlaut;
     }
-
+    public String getWortlaut()
+    {
+      return this.wortlaut;
+    }
+    public void erhöheAnzahlBelege()
+    {
+      this.anzahlBelege++;
+    }
+    public int getAnzahlBelege()
+    {
+      return this.anzahlBelege;
+    }
     public override string ToString()
     {
-      return "Wort: " + wort;
+      return "Wort: " + wortlaut;
     }
     public override bool Equals(object obj)
     {
@@ -26,14 +39,12 @@ namespace MainLexikon
       if (objAsWort == null) return false;
       else return Equals(objAsWort);
     }
-    public override int GetHashCode()
-    {
-      return (new Random()).Next(0, 2 ^ 32-1);
-    }
     public bool Equals(Wort other)
     {
       if (other == null) return false;
-      return this.wort == other.wort;
+      return this.wortlaut == other.getWortlaut();
     }
+
+
   }
 }

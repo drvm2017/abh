@@ -21,7 +21,7 @@ namespace MainLexikon
         wort = new Wort(worte[i]);
         if (lexikon.Contains(wort))
         {
-
+          lexikon[lexikon.IndexOf(wort)].erhöheAnzahlBelege();
         }
         else
         {
